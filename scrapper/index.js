@@ -4,10 +4,12 @@ const puppeteer = require('puppeteer');
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  const footlockerUrl = (name, _id) =>
-    `https://www.footlocker.com/product/${name}/${_id}.html`;
+  // const footlockerUrl = (name, _id) =>
+  //   `https://www.footlocker.com/product/${name}/${_id}.html`;
+  const footlockerUrl = (name) =>
+  `https://www.footlocker.com/product/${name}/*`;
   const name = 'nike-air-max-plus-mens';
-  const _id = '04133139';
+  //const _id = '04133139';
   await page.goto(footlockerUrl(name, _id), { waitUntil: 'networkidle2' });
 
   // Click on image buttons to activate hidden images
