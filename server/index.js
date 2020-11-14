@@ -7,11 +7,11 @@ const router = require('./router.js');
 const app = express();
 
 app.use(morgan('dev'));
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/api', router);
+app.use('/product', router);
 
 app.listen(3000, () => {
   console.log('Connected to server');

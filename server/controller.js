@@ -2,9 +2,10 @@ const realtedItem = require('../db/index.js');
 
 const controller = {
   get: (req, res) => {
-    realtedItem.find({})
+    var sku = req.params.sku;
+    realtedItem.find({'SKU': sku})
       .then((results) => {
-        console.log('Get request success');
+        console.log('Get request success', results);
         res.json(results);
       })
       .catch((err) => {
@@ -12,4 +13,5 @@ const controller = {
       });
   }
 };
+
 module.exports = controller;

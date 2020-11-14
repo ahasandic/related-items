@@ -723,13 +723,13 @@ let data = [
   }
 ];
 
-relatedItem.insertMany(data)
-  .then((results) => {
-    console.log('seeded succesful');
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// relatedItem.insertMany(data)
+//   .then((results) => {
+//     console.log('seeded succesful');
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 // relatedItem.remove({})
 //   .then((results) => {
