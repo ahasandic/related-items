@@ -4,7 +4,6 @@ import Shoe from './shoe.jsx';
 import RelatedItems from './RelatedItems.jsx';
 import TopViewed from './TopViewed.jsx';
 import RecentlyViewed from './RecentlyViewed.jsx';
-import Carousel from './Carousel.jsx';
 
 class App extends React.Component {
   constructor(props) {
