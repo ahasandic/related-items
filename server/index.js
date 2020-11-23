@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/api', router);
+app.use('/api/product', router);
 
 app.listen(3004, () => {
   console.log('Connected to server');
