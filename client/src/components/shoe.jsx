@@ -10,7 +10,7 @@ class Shoe extends React.Component {
     this.state = {
       shoe: {}
     };
-    this.addView = this.addView.bind(this);
+    this.shoeClicked = this.shoeClicked.bind(this);
   }
 
   componentDidMount() {
@@ -18,23 +18,21 @@ class Shoe extends React.Component {
       shoe: this.props.shoe
     });
   }
-  addView() {
-    axios.put(`/product/${this.state.shoe['SKU']}`)
+
+  shoeClicked() {
+    axios.put(`/product/${this.props.shoe['SKU']}`)
       .then((result) => {
-        console.log(`The request ${result.data}`);
-        this.setState({
-          shoe: result.data
-        });
-        console.log('The updated result', result);
+        this.props.shoeClicked(result.data);
       })
       .catch((err) => {
         console.error('Error updating views', err);
       });
   }
+
   render () {
     return (
       <div class="column">
-        <div class="shoe" onClick={this.addView}>
+        <div class="shoe" onClick={this.shoeClicked}>
           <div class="shoe-img-container">
             <span class="heart-icon"> <FiHeart /></span>
             <img src={this.props.shoe.currentShoePictures[0]}/>

@@ -7,7 +7,7 @@ const RecentlyViewed = (props) => (
     {props.shoes.map((shoe, index) => {
       if (index <= 4) {
         return (
-          <Shoe shoe={shoe}/>
+          <Shoe shoe={shoe} shoeClicked={props.shoeClicked}/>
         );
       }
     }

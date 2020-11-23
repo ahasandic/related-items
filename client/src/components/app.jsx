@@ -10,36 +10,26 @@ class App extends React.Component {
     this.state = {
       shoes: [],
       currentShoe: {},
-      recentlyViewed: []
+      recentlyViewed: [],
+      related: []
     };
     this.getShoes = this.getShoes.bind(this);
-    this.addToViewed = this.addToViewed.bind(this);
-    this.refreshShoes = this.refreshShoes.bind(this);
+    this.getRandomShoe = this.getRandomShoe.bind(this);
+    this.getRelatedShoes = this.getRelatedShoes.bind(this);
+    this.shoeClicked = this.shoeClicked.bind(this);
+    this.getRecent = this.getRecent.bind(this);
   }
 
-  componentWillMount() {
-    this.getShoes();
-  }
-
-  // Set the recently viewed state
-  addToViewed(shoe) {
-    // Get top five shoes in the recentlyViewed state
-    var displayShoes = this.state.recentlyViewed.slice(0, 5);
-    //Checking if target shoe doesn't in the top 5
-    if (displayShoes.every((item) => (
-      item['SKU'] !== shoe['SKU']
-    ))) {
-      //Add shoe to beginning of the states' array
+  componentDidMount() {
+    this.getShoes((shoes) => {
+      var currentShoe = this.getRandomShoe(shoes);
+      shoes.sort((a, b) => (a.views < b.views) ? 1 : -1);
       this.setState({
-        recentlyViewed: [shoe].concat(this.state.recentlyViewed)
+        shoes: shoes,
+        currentShoe: currentShoe,
+        related: this.getRelatedShoes(shoes, currentShoe),
+        recentlyViewed: [currentShoe].concat(this.state.recentlyViewed)
       });
-
-    }
-  }
-  // Update the shoes state after a click
-  refreshShoes(shoes) {
-    this.setState({
-      shoes: shoes
     });
   }
 
@@ -47,19 +37,41 @@ class App extends React.Component {
   getShoes(callback) {
     axios.get('/product')
       .then((results) => {
-        // Pick a random shoe to be the current shoe placeholder
-        var randomShoe = results.data[Math.floor(Math.random() * results.data.length)];
-
-        this.setState({
-          shoes: results.data,
-          currentShoe: randomShoe,
-          recentlyViewed: [randomShoe].concat(this.state.recentlyViewed)
-        });
-        console.log('The current shoe selected is: ', randomShoe);
+        callback(results.data);
       })
       .catch((err) => {
         console.error('error', err);
       });
+  }
+
+  getRandomShoe(shoes) {
+    var randomShoe = shoes[Math.floor(Math.random() * shoes.length)];
+    return randomShoe;
+  }
+
+  getRelatedShoes(shoes, current) {
+    // Filter shoes by name
+    var filteredShoes = shoes.filter((item) => (
+      current.shoeName === item.shoeName && current['SKU'] !== item['SKU']
+    ));
+    return filteredShoes;
+  }
+
+  shoeClicked(shoe) {
+    this.getShoes((shoes) => {
+      shoes.sort((a, b) => (a.views < b.views) ? 1 : -1);
+      this.setState({
+        shoes: shoes,
+        recentlyViewed: this.getRecent(shoe),
+        currentShoe: shoe,
+        related: this.getRelatedShoes(this.state.shoes, shoe)
+      });
+    });
+  }
+
+  getRecent(shoe) {
+    var filtered = this.state.recentlyViewed.filter((item) => (item['SKU'] !== shoe['SKU']));
+    return [shoe].concat(filtered);
   }
 
   render() {
@@ -69,19 +81,19 @@ class App extends React.Component {
           <div class="carousel-heading">
             <h2>Related Items</h2>
           </div>
-          <RelatedItems getShoes={this.getShoes} shoes={this.state.shoes} currentShoe={this.state.currentShoe} addShoe={this.addToViewed} refreshShoes={this.refreshShoes}/>
+          <RelatedItems related={this.state.related} shoeClicked={this.shoeClicked}/>
         </div>
         <div class="carousel">
           <div class="carousel-heading">
             <h2>Top Viewed</h2>
           </div>
-          <TopViewed shoes={this.state.shoes} currentShoe={this.state.currentShoe} addShoe={this.addToViewed} refreshShoes={this.refreshShoes}/>
+          <TopViewed shoes={this.state.shoes} shoeClicked={this.shoeClicked}/>
         </div>
         <div class="carousel">
           <div class="carousel-heading">
             <h2>Recently Viewed</h2>
           </div>
-          <RecentlyViewed shoes={this.state.shoes} currentShoe={this.state.currentShoe} addShoe={this.addToViewed} recent={this.state.recentlyViewed} refreshShoes={this.refreshShoes}/>
+          <RecentlyViewed shoes={this.state.recentlyViewed} shoeClicked={this.shoeClicked}/>
         </div>
       </div>
     );
