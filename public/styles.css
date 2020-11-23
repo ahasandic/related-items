@@ -1,0 +1,86 @@
+#main-component {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 81.25rem
+}
+.carousel {
+  border: 1px solid #dddddd;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.carousel-heading {
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.carousel-heading h2 {
+  margin: 0px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 24px;
+}
+
+.shoes-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  position: relative;
+  display: flex;
+  padding-left: 1rem;
+  width: 18%;
+}
+.shoe {
+  position: relative;
+  box-sizing: inherit;
+  border: 1px solid #dddddd;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  display: flex;
+  flex-direction: column;
+  width: 100%
+
+}
+.shoe-img-container {
+  background-color: whitesmoke;
+  border-bottom: 1px solid #dddddd;
+}
+.heart-icon {
+  float: right;
+}
+.shoe-img-container img{
+  width: 90%;
+  padding: 1rem;
+}
+.shoe-link {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1rem;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+}
+.product-name {
+  display: block;
+  margin-bottom: 0.95rem;
+  margin-top: 0.5rem;
+}
+.shoe-name {
+  line-height: 1;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  font: 1rem/1.5 Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 700;
+  display: inherit;
+}
+
+.shoe-gender {
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: 0.95rem;
+  font: 0.875rem/1.33333 Roboto, Arial, sans-serif;
+  color: #515151;
+  display: block;
+}
