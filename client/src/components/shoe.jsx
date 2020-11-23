@@ -20,7 +20,7 @@ class Shoe extends React.Component {
   }
 
   shoeClicked() {
-    axios.put(`/product/${this.props.shoe['SKU']}`)
+    axios.put(`/api/product/${this.props.shoe['SKU']}`)
       .then((result) => {
         this.props.shoeClicked(result.data);
       })

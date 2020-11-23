@@ -35,7 +35,7 @@ class App extends React.Component {
 
   // Grab all shoes from the db
   getShoes(callback) {
-    axios.get('/product')
+    axios.get('/api/product')
       .then((results) => {
         callback(results.data);
       })
