@@ -15,7 +15,8 @@ const relatedItemsSchema = mongoose.Schema({
   gender: String,
   price: String,
   SKU: String,
-  currentShoePictures: [String]
+  currentShoePictures: [String],
+  views: Number
 });
 
 const RelatedItem = mongoose.model('RelatedItem', relatedItemsSchema);

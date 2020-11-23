@@ -722,6 +722,9 @@ let data = [
     rating: 14
   }
 ];
+data.forEach((item) => {
+  item['views'] = 0;
+});
 
 // relatedItem.insertMany(data)
 //   .then((results) => {
