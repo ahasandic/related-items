@@ -76,7 +76,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="main-component">
+      <div id="main-component-4">
         <div class="carousel">
           <div class="carousel-heading">
             <h2>Related Items</h2>

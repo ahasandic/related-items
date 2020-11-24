@@ -31,18 +31,18 @@ class Shoe extends React.Component {
 
   render () {
     return (
-      <div class="column">
-        <div class="shoe" onClick={this.shoeClicked}>
-          <div class="shoe-img-container">
-            <span class="heart-icon"> <FiHeart /></span>
+      <div class="column-4">
+        <div class="shoe-4" onClick={this.shoeClicked}>
+          <div class="shoe-img-container-4">
+            <span class="heart-icon-4"> <FiHeart /></span>
             <img src={this.props.shoe.currentShoePictures[0]}/>
           </div>
-          <a class="shoe-link">
-            <span class="product-name">
-              <span class="shoe-name">{this.props.shoe.shoeName}</span>
-              <span class="shoe-gender">{this.props.shoe.gender}</span>
+          <a class="shoe-link-4">
+            <span class="product-name-4">
+              <span class="shoe-name-4">{this.props.shoe.shoeName}</span>
+              <span class="shoe-gender-4">{this.props.shoe.gender}</span>
             </span>
-            <div class="price">{this.props.shoe.price}</div>
+            <div class="price-4">{this.props.shoe.price}</div>
           </a>
         </div>
       </div>

@@ -1,4 +1,4 @@
-#main-component {
+#main-component-4 {
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;
@@ -21,18 +21,18 @@
   font-size: 24px;
 }
 
-.shoes-row {
+.shoes-row-4 {
   display: flex;
   flex-wrap: wrap;
 }
 
-.column {
+.column-4 {
   position: relative;
   display: flex;
   padding-left: 1rem;
   width: 18%;
 }
-.shoe {
+.shoe-4 {
   position: relative;
   box-sizing: inherit;
   border: 1px solid #dddddd;
@@ -42,18 +42,18 @@
   width: 100%
 
 }
-.shoe-img-container {
+.shoe-img-container-4 {
   background-color: whitesmoke;
   border-bottom: 1px solid #dddddd;
 }
-.heart-icon {
+.heart-icon-4 {
   float: right;
 }
-.shoe-img-container img{
+.shoe-img-container-4 img{
   width: 90%;
   padding: 1rem;
 }
-.shoe-link {
+.shoe-link-4 {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -61,12 +61,12 @@
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
 }
-.product-name {
+.product-name-4 {
   display: block;
   margin-bottom: 0.95rem;
   margin-top: 0.5rem;
 }
-.shoe-name {
+.shoe-name-4 {
   line-height: 1;
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
@@ -76,7 +76,7 @@
   display: inherit;
 }
 
-.shoe-gender {
+.shoe-gender-4 {
   font-weight: 400;
   font-size: 14px;
   margin-top: 0.95rem;
