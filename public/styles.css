@@ -30,7 +30,7 @@
   position: relative;
   display: flex;
   padding-left: 1rem;
-  width: 18%;
+  width: 18.5%;
 }
 .shoe-4 {
   position: relative;
@@ -45,13 +45,26 @@
 .shoe-img-container-4 {
   background-color: whitesmoke;
   border-bottom: 1px solid #dddddd;
+  height: 233px;
 }
 .heart-icon-4 {
   float: right;
+  height: 20px;
+  width: 20px;
+}
+
+svg {
+  height: 100%;
+  width: 100%;
+}
+
+svg:hover {
+  fill: black;
 }
 .shoe-img-container-4 img{
   width: 90%;
   padding: 1rem;
+  position: absolute;
 }
 .shoe-link-4 {
   display: flex;
