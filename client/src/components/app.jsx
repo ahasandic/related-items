@@ -22,7 +22,9 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getShoes((shoes) => {
+      // pick a random shoe
       var currentShoe = this.getRandomShoe(shoes);
+      // Sort all shoes
       shoes.sort((a, b) => (a.views < b.views) ? 1 : -1);
       this.setState({
         shoes: shoes,
@@ -44,11 +46,13 @@ class App extends React.Component {
       });
   }
 
+  // Picks a shoe from the db to be the display shoe, not insync with service #1
   getRandomShoe(shoes) {
     var randomShoe = shoes[Math.floor(Math.random() * shoes.length)];
     return randomShoe;
   }
 
+  // Builds the order for the related shoe carousel
   getRelatedShoes(shoes, current) {
     // Filter shoes by name
     var filteredShoes = shoes.filter((item) => (
@@ -57,8 +61,10 @@ class App extends React.Component {
     return filteredShoes;
   }
 
+  // Updates the display shoe and the carousels
   shoeClicked(shoe) {
     this.getShoes((shoes) => {
+      // Sort shoes by views
       shoes.sort((a, b) => (a.views < b.views) ? 1 : -1);
       this.setState({
         shoes: shoes,
@@ -69,6 +75,7 @@ class App extends React.Component {
     });
   }
 
+  // Builds the carousel for most recently viewed shoes
   getRecent(shoe) {
     var filtered = this.state.recentlyViewed.filter((item) => (item['SKU'] !== shoe['SKU']));
     return [shoe].concat(filtered);
