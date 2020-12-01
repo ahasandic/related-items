@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const mongooseURI = 'mongodb://localhost/related';
+const mongooseURI = 'mongodb://database:/related';
 mongoose.Promise = global.Promise;
 
-const db = mongoose.connect(mongooseURI)
+const db = mongoose.connect(mongooseURI, {useNewUrlParser: true, useUnifiedTopology: true})
   .then((results) => {
     console.log('Connected to mongoose');
   })

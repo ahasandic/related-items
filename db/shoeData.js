@@ -1,4 +1,5 @@
 const relatedItem = require('./index.js');
+const mongoose = require('mongoose');
 
 let data = [
   {
@@ -727,18 +728,20 @@ data.forEach((item) => {
   item.currentShoePictures.unshift('https://images.footlocker.com/is/image/EBFL2/' + item['SKU'] + '_a1?wid=630&hei=630&fmt=png-alpha');
 });
 
-// relatedItem.insertMany(data)
-//   .then((results) => {
-//     console.log('seeded succesful');
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+relatedItem.remove({})
+  .then((results) => {
+    console.log('deletion succesful');
+    mongoose.connection.close();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-// relatedItem.remove({})
-//   .then((results) => {
-//     console.log('seeded succesful');
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+relatedItem.insertMany(data)
+  .then((results) => {
+    console.log('seeded succesful');
+    mongoose.connection.close();
+  })
+  .catch((err) => {
+    console.log(err);
+  });

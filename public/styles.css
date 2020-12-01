@@ -1,9 +1,11 @@
 #main-component-4 {
+  padding-top: 1.5%;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
-  max-width: 81.25rem
+  /* max-width: 81.25rem */
+  width: 87.1%;
 }
 .carousel {
   border: 1px solid #dddddd;
@@ -14,18 +16,15 @@
   margin-bottom: 1rem;
   padding-left: 1rem;
 }
-
 .carousel-heading h2 {
   margin: 0px;
   font-family: Roboto, Arial, sans-serif;
   font-size: 24px;
 }
-
 .shoes-row-4 {
   display: flex;
   flex-wrap: wrap;
 }
-
 .column-4 {
   position: relative;
   display: flex;
@@ -40,7 +39,6 @@
   display: flex;
   flex-direction: column;
   width: 100%
-
 }
 .shoe-img-container-4 {
   background-color: whitesmoke;
@@ -52,12 +50,10 @@
   height: 20px;
   width: 20px;
 }
-
-svg {
+.heart-icon-4 svg {
   height: 100%;
   width: 100%;
 }
-
 svg:hover {
   fill: black;
 }
@@ -88,7 +84,6 @@ svg:hover {
   font-weight: 700;
   display: inherit;
 }
-
 .shoe-gender-4 {
   font-weight: 400;
   font-size: 14px;
