@@ -723,11 +723,13 @@ let data = [
     rating: 14
   }
 ];
+//Adding view count and main picture to db
 data.forEach((item) => {
   item['views'] = 0;
   item.currentShoePictures.unshift('https://images.footlocker.com/is/image/EBFL2/' + item['SKU'] + '_a1?wid=630&hei=630&fmt=png-alpha');
 });
 
+//Remove all entries from db
 relatedItem.remove({})
   .then((results) => {
     console.log('deletion succesful');
@@ -737,6 +739,7 @@ relatedItem.remove({})
     console.log(err);
   });
 
+// Reseed db
 relatedItem.insertMany(data)
   .then((results) => {
     console.log('seeded succesful');

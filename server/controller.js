@@ -1,6 +1,7 @@
 const relatedItem = require('../db/index.js');
 
 const controller = {
+  // Retrieve all shoes from the db
   getAll: (req, res) => {
     relatedItem.find({})
       .then((results) => {
@@ -25,7 +26,9 @@ const controller = {
       });
   },
   updateViews: (req, res) => {
+    // Get the sku (shoe identifiy)
     var sku = req.params.sku;
+    // Increment the view count of shoe
     relatedItem.findOneAndUpdate({'SKU': sku}, {$inc: {views: 1} })
       .then((result) => {
         console.log('Updated', result);

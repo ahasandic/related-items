@@ -20,8 +20,10 @@ class Shoe extends React.Component {
   }
 
   shoeClicked() {
+    // Update the shoes view cout
     axios.put(`/api/product/${this.props.shoe['SKU']}`)
       .then((result) => {
+        // Pass the results to the app component
         this.props.shoeClicked(result.data);
       })
       .catch((err) => {
