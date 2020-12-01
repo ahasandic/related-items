@@ -1,4 +1,5 @@
 const relatedItem = require('./index.js');
+const mongoose = require('mongoose');
 
 let data = [
   {
@@ -9,7 +10,7 @@ let data = [
     size:
       [7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 14, 15, 16, 17, 18],
     currentShoePictures:
-      ['https://images.footlocker.com/is/image/EBFL2/FU7385_a1?wid=56&hei=56&fmt=png-alpha',
+      ['https://images.footlocker.com/is/image/EBFL2/FU7385_a1?wid=630&hei=630&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/FU7385_a1?wid=56&hei=56&fmt=png-alpha',
         'https://images.footlocker.com/is/image/EBFL2/FU7385_a2?wid=56&hei=56&fmt=png-alpha',
         'https://images.footlocker.com/is/image/EBFL2/FU7385_a3?wid=56&hei=56&fmt=png-alpha',
         'https://images.footlocker.com/is/image/EBFL2/FU7385_a4?wid=56&hei=56&fmt=png-alpha',
@@ -33,7 +34,7 @@ let data = [
     size:
       [7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 14, 15, 16, 17, 18],
     currentShoePictures:
-      ['https://images.footlocker.com/is/image/EBFL2/FW8518_a1?wid=56&hei=56&fmt=png-alpha',
+      ['https://images.footlocker.com/is/image/EBFL2/FW8518_a1?wid=630&hei=630&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/FW8518_a1?wid=56&hei=56&fmt=png-alpha',
         'https://images.footlocker.com/is/image/EBFL2/FW8518_a2?wid=56&hei=56&fmt=png-alpha'],
     otherColorWays:
       ['https://images.footlocker.com/is/image/EBFL2/FW8518?wid=185&hei=185&fmt=png-alpha',
@@ -54,7 +55,7 @@ let data = [
     size:
       [7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 14, 15, 16, 17, 18],
     currentShoePictures:
-      ['https://images.footlocker.com/is/image/EBFL2/FV8961_a1?wid=56&hei=56&fmt=png-alpha',
+      ['https://images.footlocker.com/is/image/EBFL2/FV8961_a1?wid=630&hei=630&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/FV8961_a1?wid=56&hei=56&fmt=png-alpha',
         'https://images.footlocker.com/is/image/EBFL2/FV8961_a2?wid=56&hei=56&fmt=png-alpha'],
     otherColorWays:
       ['https://images.footlocker.com/is/image/EBFL2/FV8961?wid=185&hei=185&fmt=png-alpha',
@@ -75,7 +76,7 @@ let data = [
     size:
       [7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 14, 15, 16, 17, 18],
     currentShoePictures:
-      ['https://images.footlocker.com/is/image/EBFL2/FW8517_a1?wid=56&hei=56&fmt=png-alpha',
+      ['https://images.footlocker.com/is/image/EBFL2/FW8517_a1?wid=630&hei=630&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/FW8517_a1?wid=56&hei=56&fmt=png-alpha',
         'https://images.footlocker.com/is/image/EBFL2/FW8517_a2?wid=56&hei=56&fmt=png-alpha'],
     otherColorWays:
       ['https://images.footlocker.com/is/image/EBFL2/FW8517?wid=185&hei=185&fmt=png-alpha',
@@ -722,19 +723,25 @@ let data = [
     rating: 14
   }
 ];
+data.forEach((item) => {
+  item['views'] = 0;
+  item.currentShoePictures.unshift('https://images.footlocker.com/is/image/EBFL2/' + item['SKU'] + '_a1?wid=630&hei=630&fmt=png-alpha');
+});
 
-// relatedItem.insertMany(data)
-//   .then((results) => {
-//     console.log('seeded succesful');
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+relatedItem.remove({})
+  .then((results) => {
+    console.log('deletion succesful');
+    mongoose.connection.close();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-// relatedItem.remove({})
-//   .then((results) => {
-//     console.log('seeded succesful');
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+relatedItem.insertMany(data)
+  .then((results) => {
+    console.log('seeded succesful');
+    mongoose.connection.close();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
